@@ -1,0 +1,7 @@
+bitalino==1.2.1
+matplotlib==3.4.2
+numpy==1.21.0
+PeakUtils==1.3.3
+pybluez2==0.41
+pyserial==3.5
+statsmodels==0.12.2
