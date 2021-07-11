@@ -13,6 +13,10 @@ ENV PYTHONUNBUFFERED=1
 RUN apt-get update \
     && apt-get install -y bluez bluetooth
 
+RUN apt-get -y install libc-dev
+RUN apt-get -y install build-essential
+RUN pip install -U pip
+
 # Install pip requirements
 COPY requirements.txt .
 RUN python3 -m pip install -r requirements.txt
