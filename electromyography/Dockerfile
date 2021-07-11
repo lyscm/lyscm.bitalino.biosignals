@@ -11,8 +11,9 @@ ENV PYTHONUNBUFFERED=1
 
 # Install pip requirements
 COPY requirements.txt .
-RUN python3 -m pip install -U pip
-RUN python3 -m pip install -r requirements.txt
+#RUN python3.8 get-pip.py
+RUN pip install --upgrade pip
+RUN pip install -r requirements.txt
 
 COPY ./src/ .
 

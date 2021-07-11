@@ -110,6 +110,6 @@ jobs:
           docker buildx build --output "type=image,push=true" ${{ steps.metadata.outputs.buildx_args }}
 
       - name: 9 - Inspect Packages
-        if: always() && github.event_name != 'pull_request'
+        if: success() && github.event_name != 'pull_request'
         run: |
           docker buildx imagetools inspect ${{ steps.metadata.outputs.image_id }}:${{ steps.metadata.outputs.version }}
