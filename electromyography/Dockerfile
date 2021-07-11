@@ -1,5 +1,5 @@
 # For more information, please refer to https://aka.ms/vscode-docker-python
-FROM python:3.7
+FROM python:slim-buster
 
 ARG TARGETPLATFORM
 WORKDIR /lyscm/$TARGETPLATFORM
@@ -12,8 +12,7 @@ ENV PYTHONUNBUFFERED=1
 
 # Install pip requirements
 COPY requirements.txt .
-RUN pip install --upgrade pip setuptools wheel
-RUN python -m pip install --no-cache-dir -r requirements.txt
+RUN python -m pip install -r requirements.txt
 
 COPY ./src/*.py .
 
