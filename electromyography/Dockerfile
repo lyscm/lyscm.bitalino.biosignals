@@ -9,6 +9,8 @@ ENV PYTHONDONTWRITEBYTECODE=1
 # Turns off buffering for easier container logging
 ENV PYTHONUNBUFFERED=1
 
+RUN sudo apt-get install python3-matplotlib
+
 # Install pip requirements
 COPY requirements.txt .
 RUN python -m pip install -U pip
