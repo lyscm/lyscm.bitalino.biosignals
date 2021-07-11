@@ -1,5 +1,5 @@
 # For more information, please refer to https://aka.ms/vscode-docker-python
-FROM arm32v7/python:3.7
+FROM python:slim-buster
 
 ARG TARGETPLATFORM
 WORKDIR /lyscm/$TARGETPLATFORM
@@ -10,9 +10,17 @@ ENV PYTHONDONTWRITEBYTECODE=1
 # Turns off buffering for easier container logging
 ENV PYTHONUNBUFFERED=1
 
+RUN pip install -U \
+    && pip \
+    && setuptools \
+    && wheel
+
+RUN apt-get update \
+    && apt-get install -y bluez bluetooth
+
 # Install pip requirements
 COPY requirements.txt .
-RUN python -m pip install -r requirements.txt
+RUN pip install -r requirements.txt
 
 COPY ./src/*.py .
 
