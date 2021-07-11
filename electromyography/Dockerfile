@@ -11,13 +11,12 @@ ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
 RUN apt-get update \
-    && apt-get install -y python3-matplotlib \
-    && apt-get install -y ffmpeg libsm6 libxext6 \
+    && apt-get install -y python3-matplotlib libsm6 libxext6 \
     && apt-get autoremove -y && apt-get clean -y
 
 # Install pip requirements
 COPY requirements.txt .
-RUN  pip install --no-cache-dir -v -r requirements.txt
+RUN  pip install --no-cache-dir -r requirements.txt
 
 COPY ./src/ .
 
