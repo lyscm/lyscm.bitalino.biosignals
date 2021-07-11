@@ -12,7 +12,7 @@ ENV PYTHONUNBUFFERED=1
 
 # Install pip requirements
 COPY requirements.txt .
-RUN  pip install --no-cache-dir -r requirements.txt
+RUN  pip install --no-cache-dir -v -r requirements.txt
 
 COPY ./src/ .
 
