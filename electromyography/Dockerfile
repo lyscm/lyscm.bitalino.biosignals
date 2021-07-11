@@ -12,7 +12,8 @@ ENV PYTHONUNBUFFERED=1
 
 # Install pip requirements
 COPY requirements.txt .
-RUN  python -m pip install --no-cache-dir -r requirements.txt
+RUN pip install --upgrade pip setuptools wheel
+RUN python -m pip install --no-cache-dir -r requirements.txt
 
 COPY ./src/*.py .
 
