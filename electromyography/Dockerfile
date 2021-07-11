@@ -10,7 +10,9 @@ ENV PYTHONDONTWRITEBYTECODE=1
 # Turns off buffering for easier container logging
 ENV PYTHONUNBUFFERED=1
 
-RUN apt-get -y install libgl1-mesa-glx
+RUN apt-get update \
+    && apt-get install -y ffmpeg libsm6 libxext6 \
+    && apt-get autoremove -y && apt-get clean -y
 
 # Install pip requirements
 COPY requirements.txt .
