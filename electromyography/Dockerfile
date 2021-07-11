@@ -1,5 +1,5 @@
 # For more information, please refer to https://aka.ms/vscode-docker-python
-FROM python:alphine
+FROM python:alpine
 
 ARG TARGETPLATFORM
 WORKDIR /lyscm/$TARGETPLATFORM
