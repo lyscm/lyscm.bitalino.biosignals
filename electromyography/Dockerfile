@@ -1,5 +1,10 @@
 # For more information, please refer to https://aka.ms/vscode-docker-python
-FROM python:3.8
+FROM python:alpine
+
+RUN echo "http://dl-8.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories
+RUN apk --no-cache --update-cache add gcc gfortran python python-dev py-pip build-base wget freetype-dev libpng-dev openblas-dev
+RUN ln -s /usr/include/locale.h /usr/include/xlocale.h
+
 
 ARG TARGETPLATFORM
 WORKDIR /lyscm/$TARGETPLATFORM
@@ -12,15 +17,7 @@ ENV PYTHONUNBUFFERED=1
 
 # Install pip requirements
 COPY requirements.txt .
-RUN set -ex \
-    && BUILD_DEPS=" \
-    build-essential \
-    libpcre3-dev \
-    libpq-dev \
-    vim \
-    " \
-    && apt-get update && apt-get install -y --no-install-recommends $BUILD_DEPS \
-    && pip install -r requirements.txt
+RUN  pip install --no-cache-dir -r requirements.txt
 
 COPY ./src/ .
 
