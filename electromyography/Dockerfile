@@ -1,5 +1,5 @@
 # For more information, please refer to https://aka.ms/vscode-docker-python
-FROM python:slim-buster
+FROM arm32v7/python:slim-buster
 
 ARG TARGETPLATFORM
 WORKDIR /lyscm/$TARGETPLATFORM
