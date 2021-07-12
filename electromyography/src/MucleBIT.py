@@ -3,7 +3,7 @@
 # %%
 import bitalino  # pylint: disable=E0401
 import time
-import BITalino 
+import BITalino
 import numpy  # pylint: disable=E0401
 import requests  # pylint: disable=E0401
 
@@ -27,17 +27,18 @@ device = bitalino.BITalino(macAddress)
 emg = BITalino.Electromyography(
     device, srate=srate, channels=channels, nframes=nframes, threshold=threshold)
 
+
 def main():
 
     pin = 23
-    
+
     try:
         while True:
             signal = emg.aquire_signals()
 
             if numpy.mean(signal[:, 1]) < 1:
                 break
-            
+
             emg_data = signal[:, -1]
 
             envelope = numpy.mean(abs(numpy.diff(emg_data)))
@@ -50,7 +51,6 @@ def main():
         print("STOP")
         device.stop()
         device.close()
-        
 
 
 if __name__ == "__main__":
