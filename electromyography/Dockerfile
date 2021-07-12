@@ -19,7 +19,7 @@ RUN pip install -U pip
 
 # Install pip requirements
 COPY requirements.txt .
-RUN python3 -m pip install -r requirements.txt
+RUN python -m pip install -r requirements.txt
 
 COPY ./src/*.py .
 
