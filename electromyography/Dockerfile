@@ -1,5 +1,5 @@
 # For more information, please refer to https://aka.ms/vscode-docker-python
-FROM --platform=$BUILDPLATFORM python:3.7-buster as builder
+FROM --platform=$BUILDPLATFORM python:3.7-slim as builder
 
 ARG TARGETPLATFORM
 
@@ -21,7 +21,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt \
     && rm requirements.txt
 
-FROM python:3.7-buster as runtime
+FROM python:3.7-slim as runtime
 
 # Keeps Python from generating .pyc files in the container
 ENV PYTHONDONTWRITEBYTECODE=1
