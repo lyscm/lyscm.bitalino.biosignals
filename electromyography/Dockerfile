@@ -37,4 +37,6 @@ WORKDIR /lyscm/$TARGETPLATFORM
 COPY --from=builder /.venv /.venv
 
 COPY ./src/*.py .
-CMD ["./bin/run.sh"]
+
+ENTRYPOINT [ "python" ]
+CMD ["./MucleBIT.py"]
