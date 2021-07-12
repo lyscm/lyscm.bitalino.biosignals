@@ -1,11 +1,8 @@
 # For more information, please refer to https://aka.ms/vscode-docker-python
-FROM --platform=$BUILDPLATFORM python as builder
+FROM --platform=$BUILDPLATFORM python:3.7-slim as builder
 
 ARG TARGETPLATFORM
 WORKDIR /lyscm/$TARGETPLATFORM
-
-RUN apt-get update \
-    && apt-get -y install libatlas-base-dev
 
 # Install pip requirements
 COPY requirements.txt .
