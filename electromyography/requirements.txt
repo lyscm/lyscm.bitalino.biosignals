@@ -1,4 +1,4 @@
 bitalino==1.2.1
-numpy
+numpy==1.14.1
 pybluez2==0.41
 pyserial==3.5

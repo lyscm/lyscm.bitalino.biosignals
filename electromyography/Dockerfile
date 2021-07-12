@@ -1,5 +1,17 @@
 # For more information, please refer to https://aka.ms/vscode-docker-python
-FROM arm32v7/python:slim-buster
+FROM --platform=$BUILDPLATFORM python as builder
+
+ARG TARGETPLATFORM
+WORKDIR /lyscm/$TARGETPLATFORM
+
+RUN apt-get update \
+    && apt-get -y install libatlas-base-dev
+
+# Install pip requirements
+COPY requirements.txt .
+RUN python -m pip install --no-cache-dir -r requirements.txt
+
+FROM python:stretch as runtime
 
 ARG TARGETPLATFORM
 WORKDIR /lyscm/$TARGETPLATFORM
@@ -14,13 +26,14 @@ RUN apt-get update \
 	&& apt-get install -y gcc make apt-transport-https ca-certificates build-essential \
     && apt-get install -y bluez bluetooth
 
-
 # Install pip requirements
-COPY requirements.txt .
-RUN python -m pip install --index-url=https://www.piwheels.org/simple --no-cache-dir -r requirements.txt
-
+COPY --from=builder $HOME/.local $HOME/.local
 
 COPY ./src/*.py .
+
+RUN apt-get update \
+    && apt-get -y install libatlas-base-dev \
+    && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ENTRYPOINT [ "python" ]
 CMD ["./psychomotrics.py"]
