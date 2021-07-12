@@ -1,5 +1,5 @@
 # For more information, please refer to https://aka.ms/vscode-docker-python
-FROM --platform=$BUILDPLATFORM python:slim as builder
+FROM --platform=$BUILDPLATFORM python:slim
 
 ARG TARGETPLATFORM
 
@@ -21,21 +21,6 @@ ENV PATH="/.venv/bin:$PATH"
 COPY requirements.txt .
 RUN pip3 install --no-cache-dir -r requirements.txt \
     && rm requirements.txt
-
-FROM python:alpine as runtime
-
-# Keeps Python from generating .pyc files in the container
-ENV PYTHONDONTWRITEBYTECODE=1
-# Turns off buffering for easier container logging
-ENV PYTHONUNBUFFERED=1
-# Make sure we use the virtualenv:
-ENV PATH="/.venv/bin:$PATH"
-ENV PIP_DISABLE_PIP_VERSION_CHECK=1
-
-ARG TARGETPLATFORM
-WORKDIR /lyscm/$TARGETPLATFORM
-
-COPY --from=builder /.venv /.venv
 
 COPY ./src/*.py .
 
