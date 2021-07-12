@@ -1,4 +1,4 @@
 bitalino
-numpy==1.14.1
+numpy
 pybluez2
 pyserial

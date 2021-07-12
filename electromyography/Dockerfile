@@ -1,5 +1,5 @@
 # For more information, please refer to https://aka.ms/vscode-docker-python
-FROM --platform=$BUILDPLATFORM python as builder
+FROM --platform=$BUILDPLATFORM python:slim as builder
 
 ARG TARGETPLATFORM
 
@@ -22,7 +22,7 @@ COPY requirements.txt .
 RUN pip3 install --no-cache-dir -r requirements.txt \
     && rm requirements.txt
 
-FROM python as runtime
+FROM python:slim as runtime
 
 # Keeps Python from generating .pyc files in the container
 ENV PYTHONDONTWRITEBYTECODE=1
