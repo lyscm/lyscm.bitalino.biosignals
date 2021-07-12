@@ -19,7 +19,7 @@ ENV PATH="/.venv/bin:$PATH"
 
 # Install pip requirements
 COPY requirements.txt .
-RUN pip3 install --no-cache-dir -r requirements.txt \
+RUN pip install --no-cache-dir -r requirements.txt \
     && rm requirements.txt
 
 FROM python:slim as runtime
