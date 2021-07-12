@@ -1,5 +1,5 @@
 # For more information, please refer to https://aka.ms/vscode-docker-python
-FROM arm32v7/python:3.7
+FROM python:3.7
 
 ARG TARGETPLATFORM
 WORKDIR /lyscm/$TARGETPLATFORM
@@ -11,11 +11,8 @@ ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
 RUN apt-get update \
+	&& apt-get install -y gcc make apt-transport-https ca-certificates build-essential \
     && apt-get install -y bluez bluetooth
-
-RUN apt-get -y install libc-dev
-RUN apt-get -y install build-essential
-RUN pip install -U pip
 
 # Install pip requirements
 COPY requirements.txt .
