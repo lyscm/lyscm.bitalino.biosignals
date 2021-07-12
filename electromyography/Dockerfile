@@ -1,5 +1,5 @@
 # For more information, please refer to https://aka.ms/vscode-docker-python
-FROM python:slim-buster
+FROM python:alpine
 
 ARG TARGETPLATFORM
 WORKDIR /lyscm/$TARGETPLATFORM
@@ -27,11 +27,6 @@ ARG PACKAGES="\
     tcl \
     tk \
     libssl1.0"
-
-RUN apt-get update \
-	&& apt-get install -y gcc make apt-transport-https ca-certificates build-essential \
-    && apt-get install -y bluez bluetooth
-
 
 # Install pip requirements
 COPY requirements.txt .
