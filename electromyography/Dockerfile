@@ -1,5 +1,5 @@
 # For more information, please refer to https://aka.ms/vscode-docker-python
-FROM --platform=$BUILDPLATFORM python:3.7-slim as builder
+FROM python:3.7-slim as builder
 
 ARG TARGETPLATFORM
 WORKDIR /lyscm/$TARGETPLATFORM
