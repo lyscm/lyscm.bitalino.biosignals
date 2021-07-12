@@ -1,6 +1,6 @@
 # BITALINO BIOSIGNALS - REPOSITORY <h1> 
 
-[![electromyography - CI](https://github.com/lyscm/lyscm.bitalino.biosignals/actions/workflows/electromyography.yml/badge.svg?branch=master)](https://github.com/lyscm/lyscm.bitalino.biosignals/actions/workflows/electromyography.yml)
+[![electromyography - CI](https://github.com/lyscm/lyscm.bitalino.biosignals/actions/workflows/electromyography-CI.yml/badge.svg?branch=master)](https://github.com/lyscm/lyscm.bitalino.biosignals/actions/workflows/electromyography-CI.yml)
 
 ## Initiate package(s): <h2> 
 
