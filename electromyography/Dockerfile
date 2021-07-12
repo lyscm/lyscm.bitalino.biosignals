@@ -1,5 +1,5 @@
 # For more information, please refer to https://aka.ms/vscode-docker-python
-FROM --platform=$BUILDPLATFORM python as builder
+FROM --platform=$BUILDPLATFORM python:slim as builder
 
 ARG TARGETPLATFORM
 
