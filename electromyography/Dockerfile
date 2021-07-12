@@ -35,8 +35,6 @@ RUN apt-get update \
 
 # Install pip requirements
 COPY requirements.txt .
-RUN python -m pip install -r requirements.txt
-
 RUN apk add --no-cache --virtual build-dependencies python --update py-pip \
     && apk add --virtual build-runtime \
     build-base python-dev openblas-dev freetype-dev pkgconfig gfortran \
