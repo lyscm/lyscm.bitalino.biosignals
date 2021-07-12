@@ -1,5 +1,5 @@
 # For more information, please refer to https://aka.ms/vscode-docker-python
-FROM --platform=$BUILDPLATFORM python:slim-stretch
+FROM --platform=$BUILDPLATFORM python:slim-buster
 
 ARG TARGETPLATFORM
 
