@@ -8,7 +8,7 @@ import requests  # pylint: disable=E0401
 
 ENDPOINT_PORT = 8080
 ENDPOINT_IP_ADDRESS = "localhost"
-ENDPOINT_ADDRESS = "http://{}:{}//v1.0/gpio/led".format(
+ENDPOINT_ADDRESS = "http://{}:{}/v1.0/gpio/led".format(
     ENDPOINT_IP_ADDRESS, ENDPOINT_PORT)
 
 
@@ -28,6 +28,6 @@ class Electromyography:
 
     def set_led_status(self, pin, status):
         response = requests.post(
-            "{}?pin={}&status={}".format(ENDPOINT_ADDRESS, pin, status))
+            "{}/switch?pin={}&status={}".format(ENDPOINT_ADDRESS, pin, status))
         print(response)
     pass
