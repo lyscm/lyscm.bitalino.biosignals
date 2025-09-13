@@ -45,10 +45,10 @@ def main():
 
             print("Envelope: {}".format(envelope))
 
-            # if envelope > threshold:
-            #     emg.set_led_status(pin=pin, status="on")
-            # else:
-            #     emg.set_led_status(pin=pin, status="off")
+            if envelope > threshold:
+                emg.set_led_status(pin=pin, status="on")
+            else:
+                emg.set_led_status(pin=pin, status="off")
     finally:
         print("STOP")
         device.stop()
