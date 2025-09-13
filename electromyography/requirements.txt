@@ -1,6 +1,4 @@
-bitalino==1.2.1
-numpy==1.21.0
-pybluez2==0.41
-pyserial==3.5
-requests==2.25.1
-pybluez
+bitalino
+numpy
+pyserial
+requests
