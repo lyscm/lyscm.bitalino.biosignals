@@ -43,10 +43,12 @@ def main():
 
             envelope = numpy.mean(abs(numpy.diff(emg_data)))
 
-            if envelope > threshold:
-                emg.set_led_status(pin=pin, status="on")
-            else:
-                emg.set_led_status(pin=pin, status="off")
+            print("Envelope: {}".format(envelope))
+
+            # if envelope > threshold:
+            #     emg.set_led_status(pin=pin, status="on")
+            # else:
+            #     emg.set_led_status(pin=pin, status="off")
     finally:
         print("STOP")
         device.stop()
