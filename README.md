@@ -9,6 +9,10 @@ python -m venv .venv
 source .venv/bin/activate
 pip install --upgrade pip
 pip install -r requirements.txt
+
+usbipd.exe list
+usbipd.exe bind --busid <BUS-ID>
+usbipd.exe attach --wsl --busid <BUS-ID>
 ```
 
 Set parameters:
